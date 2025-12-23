@@ -1,0 +1,44 @@
+
+Spring Boot profiles
+=========================
+
+application.properties
+----------------------
+ spring.active.profile=dev
+
+application-dev.properties
+--------------------------
+ spring.jdbc.driver-name=com.mysql.jdbc.Driver
+
+application-test.properties
+------------------------
+ same but differante properties
+
+
+reposiroty("studentDao")
+profile("dev","test")
+class StudentDaoImpl implements StudentDao
+{
+   mysql Query
+}
+reposiroty("studentDao")
+profile("dev","test")
+class StudentDaoImpl implements StudentDao
+{
+   oracledb Query
+}
+
+Sequense in Mysql
+====================
+insert into student1 values(sno_seq.next,?,?,?,?);
+
+select * from student1 where sno=?;
+
+
+sequense for oracle
+====================
+insert into student1(sno,sname,mark1,mark2,mark3) values(student_sno_seq.next,?,?,?,?);
+
+select  sno,sname,mark1,mark2,mark3,from student1 where sno=?;
+
+

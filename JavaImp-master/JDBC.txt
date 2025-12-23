@@ -1,0 +1,15 @@
+Java Standed Edition(J2SE/JSE)===>Java,JDBC
+Java Entraprie Edition(J2ee/JEE)==>Servlets,JSP
+
+
+Steps for JDBC
+1)Import the packages
+2)Load and Register the Driverclass
+3)Establish the connection between java Application and Database
+4)create a statement
+5)Send and execute the Sql query
+6)Process the results from resultset
+7)close the connection
+
+
+JDBC API===>A set of class and Interfaces used for database communication 

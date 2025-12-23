@@ -1,0 +1,11 @@
+CSS
+The three types of CSS
+-->Inline css
+-->Internal css
+-->External css
+
+CSS Selectors
+
+-->id selector-->#
+-->class selector-->.
+-->Universal Selector--->*

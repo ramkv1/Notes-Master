@@ -1,0 +1,205 @@
+=>No fixed format for resume..
+=> No.of pages  ( Doc should be short and sweet document)   (1 side printing)
+          fresher  -> 2-3 pages (max)        
+	  1 year of exprience -> 2-3 pages (max)
+	  2 years of exprience -> 3-4 pages (max)
+	  3/4/5 years of exprience -> 4-5 pages (max)
+=> Professional fonts     Arial, verdana , Cosolas, TimeNewRoman,calibri 
+=> Font sizes :: as required     (12-16  :: normal text)
+                                                      (14-18 (B) ::  side headings)
+						      (20-24 (b)  :: main heading)
+=>No border 
+=> Justify the paragraphs
+=> Uniform Look Through out the document..
+=>No Spell mistakes  and No Gramatical mistakes
+=>As as fresher  ::  CV  (More academic details)
+=>As Exepreince :: Resume or CV (More Proffession Information)
+=> name ::  <firstname>  <surname>
+=>Write java certification exams after joining the company ... when u r in freepool (bench)
+       https://en.wikipedia.org/wiki/Oracle_Certification_Program   (     Certification exams list )
+       https://www.brainbench.com/xml/bb/common/testcenter/freetests.xml  (Free Certifications)
+       http://www.dump4exam.com/ocjp.html  (for ocjp dumps)
+=> Java fresher ::    Amcat, Elitmus , hackerrank ,   java cerfications logos  (0 or more)
+=> Java experience ::       java cerfications logos + Scrum(agile) logos  (0 or more)
+----------------------------------------------------------------------------------------------------------------------------------------------
+ Down the line , after 5 years where want see u r self?
+    ans1) Now i  am java developer.. but i want to beome full stack developer 
+    ans2) Want to become java subject expert
+    ans3)  want to become  key player in the Organization
+
+ Why  should  i hire u ?    
+   Ans) In a given  siutation, i can put my best efforts to work organization which helps me and 
+         organization to grow  using my technical, interpersonal and leadership qualities
+What is u r weakness?
+    Ans1) if i struckup somewhere in the work.. i will spend more time for perfecation with out worrying about
+              deadlines
+    Ans2)  Being from village , my english vocabulary is not so good ,i want to improve
+    Ans3)  Lazy to get up in the mornigs.. but i want to resolve it to utilize day time more effectively..
+    Ans4)  I am bit sensitive or  overreacting person .. I want to make my self strong and more workholic person 
+
+    Q)why  there is  downfall in u r academic percentages?
+     Ans) intially , i used mug up the answers... later i started understainding and analyzing the subject.. which
+     effected my academic percentags...
+
+      Q)why  there is  growth in u r academic percentages?
+
+      Q) Why did u take much time to comple u r graduation?
+             a) Financial problem .. done job for few years to support family
+	     b) Main Family member expired --Taken care of family business
+
+      Q)  Why there gaps in ur acedemics   ?
+               Above reasons +
+	                 Social work  (or) spiritual life (or)  Entrace exam preparation   (or) govt job prepareation
+
+       Q) why are coming to IT industry as non-IT graduate?
+                Ans1) From the childhood i am intrested in computers.. but i could not engg in that stream.. but
+		          from the beging i was learing IT related technologies.. So i am pursuing  IT career.
+             Ans2)  People misguided me  while choosisng courses of engg becoz of IT sector recision... But i later
+	             realized      IT is feature .. So i am pursuing IT career
+             Ans3) While using mobile Apps like  Flipkart.. i am very impressed .. i felt like entire word in
+	             my pocket.. So i attracted to IT sector
+		     note ::: lastly offcourse .. there are more  openings and packages in IT sector... even quality life..
+	        
+		natarazjavaarena --->FB group..
+
+              Freshers Technical Profile  (as java programmer)
+	       -------------------------------------------------------------------
+	       =>   Core java + adv.java + spring f/w +oracle   (to place in resume)
+	       = > CRT  (Apt +reasoning + verbal  +basic maths +puzzles and etc -- soft skills)  (Not required to place in resume)
+
+             As Fresher  how do u rate u r self in java ?
+	        Ans )  on the scale 1 to 10  , I rate my rate my self   7  (choose b/w 5.5 to 8.5)
+
+		As experienced  how do u rate u r self in java ?
+	        Ans )  on the scale 1 to 10  , I rate my rate my self   8  (choose b/w 7 to 9.5)
+
+		Can u work on new Technology which is relevant to java?
+		     Ans)  get name of the Technology ... then accept it or reject it.
+
+note:: if u have done any internship  with any company as fresher then we can
+             put it as exprience .. (but company do not considers it)
+  experience::
+   ----------------
+           Worked traniee developer/intern developer   for  ........   from   ....  to   ....
+
+   why same company has not recruited u as employee from intern ?
+        Ans)  I want learn and work on latest technologies ... in Java domain..
+	        But they offered job on old technologies.
+                 
+    why did u not  joined in that company?
+         Ans)  I want learn and work on latest technologies ... in Java domain..
+	        But they offered job on old technologies.
+         
+  we can get expieence docs in two ways
+        a)  As Perminent Employee   (Good but will not work out some times)
+	 b) As Contract employee of MNC   ( will work out most of the times)
+
+	   Avoid going to   Accenture ,  infosys , MS, TCS,IBM .....
+
+	   http://www.mca.gov.in/  (To chekc wheather company is registered or not?)
+
+ What about bank statements?
+   =>manage on u r own by deposting money into private setcto bank account..
+       through  Consultacny company reflecting company name or salary word
+         int the statement..
+  How many companies?
+   =>  upto 3 to 4 yeas 1 company ok
+    =>  more than 3/4 years  better to  show two  companies
+     (note:: Min 1/1.5 years of experience in every company makes u r profile
+       as stable profile)
+
+   How manage more gap as experience?
+       Ans) divide exp into  
+                  a) relevant experience  (IT experience)
+		   b) irrelevant experience  (Non-IT experience)
+		   
+    Projects
+    ========
+      Fresher ::    IT /Cs  -->  2 s/w projects   1 major + 1 mini
+                            NoN IT Engg -->  2 Projects  1 core  area project + 1 s/w project
+			      Non IT -Non Engg(BCA,B.sc) --> 1 s/w project
+			      
+			       To get Projects :
+			        ---------------------
+				  a) U r engg /MCA projects
+				  b) From  engg friend
+				  c) from GITHUB.com  and etc..
+    Experienced ::     1 year ::   1 Project                      (any Project max 10 months)
+                                    2 years ::  2- 3 projects
+				    3 year  :: 3-4 projects 
+				    4 year  ::  4-5 projects
+
+				    To get these Projeccts
+				    -------------------------------
+                                   a) NareshIT  Realtime Project batch   (best)
+				   b) Working  friend or relative
+				   c) Github.com
+				   d) Class MiniProjects Enhacements..
+
+HR  Interview questions for experienced
+===================================
+    Q)After  how many days u  can join ?
+
+
+    Q) why are leaving existing company?
+
+
+    q) Why should we hire u?
+
+
+    Q)  are u ready to relocate ?
+            A) yes 
+
+    q) What is expected CTC?    CTC :: Cost To company --Per Anum Salary
+              =>  30% to 50% hike existing CTC   (Good performence)
+	      =>   30% 70 %  hike existing CTC   (Best performence)
+	         Existing CTC
+	           1+ ---->  2.5 to  4.0
+		   2+  --->  3 .o  to 4.5
+		   3+  -->  4.5  to  7.0
+    
+   Q) what is take home salary  ?   (per month  salary)
+
+
+   HR Questions for  FReshers
+   =======================
+     Q)  Down the line 10 years where u want to see u r self
+     Ans)
+
+     Q)  What is weakness ?
+
+     Q) Introduce u r self or Tell about ur self?
+
+     Q)  Most imp incident in u r life
+
+     Q) Why did u choose our company?
+
+     Q) why should we hire u ?
+
+
+
+
+              
+
+
+
+
+
+
+	        
+
+
+
+
+
+
+     
+
+
+
+
+
+
+
+
+	  

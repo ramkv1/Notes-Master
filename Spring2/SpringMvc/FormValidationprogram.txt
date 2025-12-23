@@ -1,0 +1,77 @@
+public class PatientValidator implements Validator {
+
+	@Override
+	public boolean supports(Class<?> clazz) {
+		
+		return clazz.isAssignableFrom(PatientCommand.class);
+	}
+
+	@Override
+	public void validate(Object target, Errors errors) {
+		PatientCommand cmd=(PatientCommand)target;
+		System.out.println("PatientValidator.validate()");
+		if(cmd.getName()==null||cmd.getName().equals("")) {
+			errors.rejectValue("name", "patient.name.required");
+		}
+		if(cmd.getAge()==0) {
+			errors.rejectValue("age", "patient.age.required");
+		}
+		if(cmd.getHospital()==null||cmd.getHospital().equals("")) {
+			errors.rejectValue("hospital","patient.hospital.required");
+		}
+		if(cmd.getHospital().length()<3||cmd.getHospital().length()>12) {
+			errors.rejectValue("hospital", "patient.hospital.length");
+		}
+		if(cmd.getLocation()==null||cmd.getLocation().equals("")) {
+			errors.rejectValue("location", "patient.location.required");
+		}
+				
+	}
+
+}
+
+================================================================================
+@PostMapping("/corona.htm")
+	public String processForm(Map<String, Object> map,HttpSession sess,@ModelAttribute("patCmd") PatientCommand cmd,BindingResult br){
+		
+           if(validator.supports(PatientCommand.class)) {
+        	   validator.validate(cmd, br);
+			if(br.hasErrors()) {
+				return "registration_form";
+			}
+		}
+======================================================================================
+
+<form:form  modelAttribute="patCmd" onsubmit="return validate(this)" >
+<%-- <center>
+  <p style="color:red">
+   <li><form:errors path="*"/></li>
+  </p>
+</center> --%>
+
+         <table bgcolor="cyan" align="center">
+             <tr>
+                <td>Patient Name:: </td>
+                <td><form:input path="name"/><form:errors path="name"/><span id="nameErr" ></span> </td>
+             </tr>
+             <tr>
+                <td>Patient Location:: </td>
+                <td><form:input path="location"/><form:errors path="location"/><span id="locationErr"/> </td>
+             </tr>
+             <tr>
+                <td>Patient age:: </td>
+                <td><form:input path="age"/><form:errors path="age"/><span id="ageErr"/> </td>
+             </tr>
+             <tr>
+                <td>Hospital:: </td>
+                <td><form:input path="hospital"/><form:errors path="hospital"/> <span id="hospitalErr"/></td>
+             </tr>
+             
+              <tr>
+                <td><input type="submit"  value="register"></td>
+                <td><input type="reset"  value="cancel"> </td>
+             </tr>
+  
+          </table>
+  </form:form>
+=========================================================================================

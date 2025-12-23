@@ -1,0 +1,20 @@
+jndi
+
+configure jndi data source in tomcat
+  <Resource 
+  name="jdbc/UserDB"
+  auth="Container"
+  type="javax.sql.DataSource"
+  maxIdle="30"
+  maxWait="10000"
+  driverClassName="com.mysql.jdbc.Driver"
+  Url=""
+  userName=""
+  password=""
+/>
+
+JndiTemplate jnditemp=new JndiTemplate();
+DataSorce ds=jnditemp.lookup("java:comp/env/jdbc/UserDB");
+
+
+

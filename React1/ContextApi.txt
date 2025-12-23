@@ -1,0 +1,174 @@
+Context api in react js
+==========================
+
+index.js
+============
+
+import React from 'react';
+import ReactDOM from 'react-dom';
+import './index.css';
+import App from './App';
+import * as serviceWorker from './serviceWorker';
+import { StateProvider } from './StateProvider';
+import reducer, {initialState} from './reducer';
+
+ReactDOM.render(
+  <React.StrictMode>
+    <StateProvider initialState={initialState} reducer={reducer}>
+     <App />
+   </StateProvider>
+  </React.StrictMode>,
+  document.getElementById('root')
+);
+===================================================================
+
+StateProdiver.js
+=========================
+
+import React,{createContext,useContext,useReducer} from 'react'
+//prepare the data layer
+export const StateContext=createContext();
+
+//wrap out app
+export const StateProvider=({reducer,initialState,children})=>(
+    <StateContext.Provider value={useReducer(reducer, initialState)}>
+        {children}
+    </StateContext.Provider>
+   
+);
+
+
+//pull the information from the data layer
+export const useStatevalue=()=>useContext(StateContext);
+
+
+====================================================================
+reducer.js
+============
+
+
+export const initialState={
+    basket:[],
+};
+
+export const getBasketTotal=(basket)=>
+    basket?.reduce((amount,item)=>item.price+amount,0);
+
+const reducer =(state,action) =>{
+    console.log(action);
+
+    switch(action.type){
+        case 'ADD_TO_BASKET':
+          return{
+              ...state,
+              basket:[...state.basket,action.item],
+          }
+        default:
+            return state;  
+                   
+    }
+
+};
+
+export default reducer;
+
+=========================================================================
+Product.js
+==============
+
+function Product({id,title,image,price,rating}) {
+    const [{basket},dispatch] =useStatevalue();
+    const addToBasket=()=>{
+    //dispatch the action to datalayer
+
+    console.log("this is the baskt >>>",basket);
+
+    dispatch({
+        type:'ADD_TO_BASKET',
+        item:{
+            id:id,
+            title:title,
+            image:image,
+            price:price,
+            rating:rating
+        }
+    })
+
+
+    }
+
+
+    return (
+        <div className={classes.product}>
+            <div className={classes.product__info}>
+                <p>{title}</p>
+                <p className={classes.product__price}>
+                        <small>$</small>
+                     <strong>{price}</strong>
+                </p>
+                <div className={classes.product__rating}>
+                    {Array(rating).fill().map((_,i)=>
+                        <StarIcon className={classes.product__rating__star}></StarIcon>
+                    )}
+                    
+                </div>
+            </div>
+            <img 
+             src={image} 
+            alt="zootopia"></img>
+
+            <button onClick={addToBasket}>Add to Basket</button>
+        </div>
+    )
+}
+
+export default Product
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

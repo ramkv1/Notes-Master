@@ -1,0 +1,26 @@
+#!/bin/bash
+
+# Step 1: Generate DH parameters and private/public keys
+openssl genpkey -genparam -algorithm DH -out dhparam.pem
+openssl genpkey -paramfile dhparam.pem -out client_private.pem
+openssl pkey -in client_private.pem -pubout -out client_public.pem
+
+# Step 2: Send the public key to the server
+cat client_public.pem | nc localhost 12345
+
+# Step 3: Receive the server's public key
+server_pubkey=$(nc -l 12346)
+echo "$server_pubkey" > server_public.pem
+
+# Step 4: Derive the shared secret
+openssl pkeyutl -derive -inkey client_private.pem -peerkey server_public.pem -out shared_secret.bin
+
+# Step 5: Encrypt a message using the shared secret as the AES key
+echo "Hello, Secure World with Diffie-Hellman!" > message.txt
+openssl enc -aes-256-cbc -salt -in message.txt -out encrypted_data -pass file:./shared_secret.bin
+
+# Step 6: Send the encrypted message to the server
+cat encrypted_data | nc localhost 12347
+
+# Cleanup
+rm -f dhparam.pem client_private.pem client_public.pem server_public.pem shared_secret.bin message.txt encrypted_data

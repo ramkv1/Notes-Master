@@ -1,0 +1,314 @@
+1)To reverse a given String
+
+
+public class Test{
+    public static void main(String[] args) {
+       String str=new String("anhsirkamaR");
+       
+       String revers="";
+       for(int i=str.length()-1;i>=0;i--){
+           revers=revers+str.charAt(i);
+       }
+       System.out.println(revers);
+    }
+}
+========================================
+2)Fibonacci serice
+class FibonacciExample1{  
+public static void main(String args[])  
+{    
+ int n1=0,n2=1,n3,i,count=10;    
+ System.out.print(n1+" "+n2);//printing 0 and 1    
+    
+ for(i=2;i<count;++i)//loop starts from 2 because 0 and 1 are already printed    
+ {    
+  n3=n1+n2;    
+  System.out.print(" "+n3);    
+  n1=n2;    
+  n2=n3;    
+		}    
+	}
+}  
+===================================
+3)swapping of two numbers
+
+
+public class Test{
+   public static void main(String[] args) {
+      int a=10,b=20;
+      a=a+b;//30
+      b=a-b;//10
+      a=a-b;//20
+      System.out.println(a+" "+b);
+   }
+} 
+=====================================
+4)reverse of given number
+
+public class Test {
+   public static void main(String[] args) throws NumberFormatException {
+      int i=4564;
+      String s=String.valueOf(i);
+      String revnum="";
+      for(int j=s.length()-1;j>=0;j--){
+         revnum=revnum+s.charAt(j);
+      }
+      int x=Integer.parseInt(revnum);
+      System.out.println(x);
+   }
+} 
+    (or)
+    
+class Demo {
+    public static void main(String[] args)
+    {
+        int i= 18962;
+        while (i > 0) {
+            int r = i % 10;
+            System.out.print(r);
+            i = i / 10;
+        }
+    }
+}
+================================
+5)primenumber
+
+public class Primenumber {
+    public static void main(String[] args) {
+        for(int i=1;i<=100;i++){
+            int count=0;
+            for(int j=1;j<=i;j++){
+                if(i%j==0){
+                    count=count+1;
+                }
+            }
+            if(count==2){
+                System.out.print(i+" ");
+            }
+        }
+    }
+}
+
+===============
+6) for vertical input
+
+import java.util.Scanner;
+
+public class App{
+
+   public static void main(String[] args) {
+      Scanner in = new Scanner(System.in);
+       while(true) {
+        int n = in.nextInt();
+        if (n == 42) break;
+        System.out.println(n);
+      }
+    }
+}
+================================
+7)Reverse a String without using any loop
+
+
+
+public class App {
+public static void main(String[] args) {
+    String name="Ramakrishna";
+    StringBuilder Name=new StringBuilder();
+    Name.append(name);
+    System.out.println(Name.reverse());
+	}
+}
+===========================================
+// Frequencyof char
+
+public class FrequencyofChar {
+    public static void main(String[] args) {
+        String str = "abbbc";
+        char ch;
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < str.length(); i++) {
+            ch = str.charAt(i);
+            if (map.containsKey(ch)) {
+                map.put(ch, map.get(ch) + 1);
+            } else {
+                map.put(ch, 1);
+            }
+        }
+        System.out.println(map);
+    }
+}
+========================================================
+
+ static HashMap<Integer, Integer> countFreq(int a[])
+	   {
+		   HashMap <Integer, Integer> hm = new HashMap<Integer, Integer>();
+		   int n=a.length;
+	        // Insert elements and their 
+	        // frequencies in hash map.
+	        for (int i=0; i<n; i++)
+	            if (hm.containsKey(a[i]) )
+	                hm.put(a[i], hm.get(a[i]) + 1);
+	            else hm.put(a[i] , 1);
+	        
+	        return hm;
+	    }
+}
+
+=========================================================
+
+class TriangleUsingwhile{
+    public static void main(String args[]) {
+        int i = 1;
+        int j = 5;
+        while (i <= j) {
+            int l = 5;
+            while (l >= i) {
+                System.out.print(" ");
+                l--;
+            }
+
+            int k = 1;
+            while (k <= i) {
+                System.out.print("* ");
+                k++;
+            }
+            System.out.println();
+            i++;
+        }
+
+    }
+}
+
+======================================================
+Reverses a linked List
+
+
+//Definition for singly-linked list.
+  public class ListNode {
+      int val;
+      ListNode next;
+      ListNode() {}
+      ListNode(int val) { this.val = val; }
+      ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+ }
+class Solution {
+    public ListNode reverseList(ListNode head) {
+        ListNode prev = null;
+        ListNode curr = head;
+
+        while( curr != null){
+            ListNode nxt = curr.next;
+            curr.next = prev;
+            prev = curr;
+            curr =nxt;
+        }   
+        return prev;
+    }
+}
+===================================
+Q) What is the difference between database and database management system?
+
+ANS:
+
+DataBase is a memory element to store the data.
+Database Management System is a Software System, it can be used to manage the data by storing it on database and retrieving it form Database. 
+Database is a collection of interrelated data as a single unit.
+DBMS is a collection of interrelated data and a set of programs to access the data.
+====================================
+In general web applications will provide services for web clients, but distributed applications will provide services for any type of clients.
+====================================
+if we want to process a group of objects from the collection then we should 
+go for streams.
+====================================
+Default method vs multiple inheritance
+Two interfaces can contain default method with same signature then there may be a chance of 
+ambiguity problem(diamond problem) to the implementation class.to overcome this problem 
+compulsory we should override default method in the implementation class otherwise we get 
+compiletime error.
+================================
+Default methods also known as defender methods or virtual extension methods.
+The main advantage of default methods is without effecting implementation classes we can addnew 
+functionality to the interface(backward compatibility).
+================================
+reference to a constructor ===>ClassName::new
+reference to static method ===>ClassName::staticmethodname
+reference to instanceMethod==>new constructor::instanceMethod (or) objreference::instanceMethod
+===============================
+
+ public int climbStairs(int n) {
+        int one=1;
+        int two=1;
+        for(int i=0;i<n-1;i++){
+           int temp = one;
+            one = one + two;
+            two = temp;
+        }
+        return one;
+    }
+
+==================================================================
+InvertTree
+=================================================================
+
+class TreeNode {
+	int val;
+	TreeNode left;
+	TreeNode right;
+
+	TreeNode() {
+	}
+
+	TreeNode(int val) {
+		this.val = val;
+	}
+
+	TreeNode(int val, TreeNode left, TreeNode right) {
+		this.val = val;
+		this.left = left;
+		this.right = right;
+	}
+}
+
+class Solution {
+	public static TreeNode invertTree(TreeNode root) {
+		if (root != null) {
+			TreeNode temp = root.left;
+			root.left = root.right;
+			root.right = temp;
+			invertTree(root.left);
+			invertTree(root.right);
+		}
+		return root;
+	}
+}
+============================================
+reverse a String
+==========================================
+
+public static String reversString(String name) {
+        String result = "";
+        char ch;
+        for (int i = 0; i < name.length(); i++) {
+            ch = name.charAt(i);
+            result = ch + result;
+        }
+        return result;
+}
+=================================================
+Longest subString without repeting charester(Sliding window)
+====================================================
+public int lengthOfLongestSubstring(String s) {
+		    int l = 0, r = 0, max = 0;
+		    Set<Character> set = new HashSet<>();
+		    
+		    while (r < s.length()) {
+		        if (!set.contains(s.charAt(r))) {
+		            set.add(s.charAt(r++));
+		            max = Math.max(max, set.size());
+		        } else {
+		            set.remove(s.charAt(l++));
+		        }
+		    }
+		    
+		    return max;
+		   }

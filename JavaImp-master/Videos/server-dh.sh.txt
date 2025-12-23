@@ -1,0 +1,31 @@
+#!/bin/bash
+
+# Step 1: Generate DH parameters and private/public keys
+openssl genpkey -genparam -algorithm DH -out dhparam.pem
+openssl genpkey -paramfile dhparam.pem -out server_private.pem
+openssl pkey -in server_private.pem -pubout -out server_public.pem
+
+# Step 2: Listen for the client's public key
+echo "Server listening for public key exchange on port 12345..."
+client_pubkey=$(nc -l 12345)
+
+# Step 3: Send the server's public key to the client
+cat server_public.pem | nc localhost 12346
+
+# Step 4: Derive the shared secret
+echo "$client_pubkey" > client_public.pem
+openssl pkeyutl -derive -inkey server_private.pem -peerkey client_public.pem -out shared_secret.bin
+
+# Step 5: Start listening for encrypted messages
+echo "Server ready to decrypt messages..."
+nc -l 12347 > encrypted_data
+
+# Step 6: Decrypt the message using the shared secret as the AES key
+openssl enc -d -aes-256-cbc -in encrypted_data -out decrypted_message.txt -pass file:./shared_secret.bin
+
+# Display the decrypted message
+echo "Decrypted message:"
+cat decrypted_message.txt
+
+# Cleanup
+rm -f dhparam.pem server_private.pem server_public.pem client_public.pem shared_secret.bin encrypted_data decrypted_message.txt

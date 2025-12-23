@@ -1,0 +1,3 @@
+Data types---->primitive---->Number,String,Boolean,Null,Undefined,Symbol
+	   |
+	    ------>Object--->objects, arrays, dates, maps, sets, intarrays, floatarrays, promises,

@@ -1,0 +1,110 @@
+
+@Configuration
+@EnableTransactionManagement
+public class AopConfig {
+	
+	@Bean
+	public UserTransactionImp getUserTximp() throws SystemException{
+		UserTransactionImp userTximpl=new UserTransactionImp(); 
+		userTximpl.setTransactionTimeout(60);
+		return userTximpl;
+	}
+	@Bean
+	public UserTransactionManager getTXM() {
+		UserTransactionManager txm=new UserTransactionManager();
+		txm.setForceShutdown(true);		
+		return txm;
+	}
+	
+	@Bean(value = "dtxmgr")
+	public JtaTransactionManager getJtTxm() throws SystemException{
+		JtaTransactionManager jtTxm=new JtaTransactionManager();
+		jtTxm.setUserTransaction(getUserTximp());
+	    jtTxm.setTransactionManager(getTXM());	
+		return jtTxm;
+	}
+
+}
+
+---------------------------------------------------------------------------------------------------
+
+
+
+@Configuration
+@ComponentScan(basePackages = "com.vamshi.dao")
+public class PersistanceConfig {
+	
+	@Bean(value = "oraXADs")
+	public AtomikosDataSourceBean getoraAD() {
+		AtomikosDataSourceBean ad=new AtomikosDataSourceBean();
+		ad.setUniqueResourceName("oraXA"); 
+		ad.setXaDataSourceClassName("oracle.jdbc.xa.client.OracleXADataSource");
+		Properties props=new Properties();
+		props.setProperty("databaseName","xe");
+		props.setProperty("user","system");
+		props.setProperty("password", "root");
+		props.setProperty("URL", "jdbc:oracle:thin:@localhost:1521:xe");
+		ad.setXaProperties(props);
+		return ad;
+	}
+	
+
+	@Bean(value = "mysqlXADs")
+	public AtomikosDataSourceBean getmysqlAD() {
+		AtomikosDataSourceBean ad=new AtomikosDataSourceBean();
+		ad.setUniqueResourceName("mysqlXA"); 
+		ad.setXaDataSourceClassName("com.mysql.cj.jdbc.MysqlXADataSource");
+		Properties props=new Properties();
+		props.setProperty("databaseName","com.mysql.cj.jdbc.Driver");
+		props.setProperty("user","root");
+		props.setProperty("password", "root");
+		props.setProperty("URL", "jdbc:mysql://localhost:3306/bank");
+		ad.setXaProperties(props);
+		return ad;
+	}
+	
+	@Bean("orajt")
+	public JdbcTemplate getOraJt() {
+		JdbcTemplate jt=new JdbcTemplate(getoraAD());
+		return jt;
+	}
+	@Bean("mysqljt")
+	public JdbcTemplate getMysqlJt() {
+		JdbcTemplate jt=new JdbcTemplate(getmysqlAD());
+		return jt;
+	}	
+
+}
+=====================================================================================================
+
+
+
+@Service("service")
+@Transactional(propagation = Propagation.REQUIRED,transactionManager = "dtxmgr")
+public class AccountServiceImpl implements AccountService {
+
+	@Autowired
+	private DepositeDao depositeDao;
+	@Autowired
+	private WithdrawDao withdrawDao;
+	@Override
+	public boolean transferMoney(int srcAno, int destAno, float amt) {
+		boolean rs1=withdrawDao.withdraw(srcAno, amt);
+		boolean rs2=depositeDao.deposite(destAno, amt);
+		System.out.println("AccountServiceImpl.transferMoney()");
+		if(rs1==false||rs2==false) {
+			System.out.println("AccountServiceImpl.transferMoney()");
+			
+			throw new RuntimeException("Money transcation failed");
+		}
+		return true;
+	}
+	
+	
+	
+
+}
+
+
+
+

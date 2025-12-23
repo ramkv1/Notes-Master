@@ -1,0 +1,51 @@
+forLoop in shellScript
+
+======================
+#!/bin/bash
+for i in {1..10}
+do
+	echo "$i"
+done
+
+========================
+#!/bin/bash
+for (( i=0; i<=10; i++ ))
+do
+	echo "$i"
+done
+
+==========================
+#!/bin/bash
+for varname in List
+do
+	echo "statement"
+done
+
+===========================
+#!/bin/bash
+NUM=10
+if [ "$NUM"== 10 ]; then
+	echo "The number is TEN"
+fi
+
+==================================
+#!/bin/bash
+NUM=10
+if [ "$NUM"== 10 ]; then
+	echo "The number is TEN"
+else
+	echo "Please give the correct Number"
+fi
+
+
+cp originalfilename duplicatefilename
+
+useradd ramakrishna
+usermod new_username old_username
+passwd vivek
+adduser user_name new_group
+useradd –G new_group user_name
+usermod –a –G group_name user_name
+usermod –a –G new_group,new_group2,new_group3 user_name
+sudo useradd –G new_group new_user
+sudo passwd new_user

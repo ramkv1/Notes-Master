@@ -1,0 +1,118 @@
+public class DelimitedLineAggregator<T>
+==========================================
+extends ExtractorLineAggregator<T>
+A LineAggregator implementation that converts an object into a delimited list of strings. The default delimiter is a comma.
+
+public class MapJobRepositoryFactoryBean
+=========================================
+extends AbstractJobRepositoryFactoryBean
+A FactoryBean that automates the creation of a SimpleJobRepository using non-persistent in-memory DAO implementations.
+ This repository is only really intended for use in testing and rapid prototyping. In such settings you might find that 
+ResourcelessTransactionManager is useful (as long as your business logic does not use a relational database).
+ Not suited for use in multi-threaded jobs with splits, although it should be safe to use in a multi-threaded step.
+
+
+public class SimpleJobLauncher
+==================================
+extends java.lang.Object
+implements JobLauncher, org.springframework.beans.factory.InitializingBean
+Simple implementation of the JobLauncher interface. The Spring Core TaskExecutor interface is used to launch a Job. 
+This means that the type of executor set is very important. If a SyncTaskExecutor is used, then the job will be processed 
+within the same thread that called the launcher. Care should be taken to ensure any users of this class understand fully whether or
+ not the implementation of TaskExecutor used will start tasks synchronously or asynchronously. The default setting uses a synchronous task executor.
+ There is only one required dependency of this Launcher, a JobRepository. The JobRepository is used to obtain a valid JobExecution. 
+The Repository must be used because the provided Job could be a restart of an existing JobInstance, and only the Repository can reliably recreate it.
+
+
+
+public class JdbcCursorItemReader<T>
+=======================================
+extends AbstractCursorItemReader<T>
+Simple item reader implementation that opens a JDBC cursor and continually retrieves the next row in the ResultSet.
+
+The statement used to open the cursor is created with the 'READ_ONLY' option since a non read-only cursor may unnecessarily lock tables or rows.
+ It is also opened with 'TYPE_FORWARD_ONLY' option. By default the cursor will be opened using a separate connection
+ which means that it will not participate in any transactions
+ created as part of the step processing.
+
+Each call to AbstractItemCountingItemStreamItemReader.read() will call the provided RowMapper, passing in the ResultSet.
+
+
+
+public class BeanWrapperFieldExtractor<T>
+============================================
+extends java.lang.Object
+implements FieldExtractor<T>, org.springframework.beans.factory.InitializingBean
+This is a field extractor for a java bean. Given an array of property names,
+ it will reflectively call getters on the item and return an array of all the values.
+
+
+
+public class FlatFileItemWriter<T>
+=====================================
+extends AbstractFileItemWriter<T>
+This class is an item writer that writes data to a file or stream. The writer also provides restart. 
+The location of the output file is defined by a Resource and must represent a writable file.
+Uses buffered writer to improve performance.
+The implementation is not thread-safe.
+
+
+
+
+
+
+<bean id="jobRepository" class="org.springframework.batch.core.repository.support.MapJobRepositoryFactoryBean" /> 
+ 
+ <bean id="jobLauncher" class="org.springframework.batch.core.launch.support.SimpleJobLauncher">   
+     <property name="jobRepository" ref="jobRepository" /> 
+  </bean> 
+
+
+
+<!-- ItemReader which reads from database and returns the row mapped by    rowMapper -->  
+<bean id="dbItemReader" 
+ 
+ class="org.springframework.batch.item.database.JdbcCursorItemRead er">  
+       <property name="dataSource" ref="dbcpDs" />   
+      <property name="sql"    value="SELECT ID,SEMESTER, DOB, PERCENTAGE FROM EXAM_RESULT" /> 
+           <property name="rowMapper">  
+          <bean class="com.nt.rowmapper.ExamResultRowMapper"/> 
+     </property>
+  </bean> 
+
+
+
+<!-- ItemWriter writes a line into output CSV file -->  
+<bean id="flatFileItemWriter" class="org.springframework.batch.item.file.FlatFileItemWriter"> 
+  <property name="resource" value="file:csv/SuperBrains.csv" /> 
+  <property name="lineAggregator"> 
+   <!-- An Aggregator which converts an object into delimited list of strings -->  
+  <bean class="org.springframework.batch.item.file.transform.DelimitedLineAggregator"> 
+    <property name="delimiter" value="," />   
+   <property name="fieldExtractor"> 
+     <!-- Extractor which returns the value of beans property through reflection -->  
+    <bean class="org.springframework.batch.item.file.transform.BeanWrapperFieldExtractor">    
+         <property name="names" value="id, sem, percentage, dob" /> 
+     </bean>
+     </property>   
+ </bean>  
+ </property>  
+</bean> 
+
+
+<!-- Optional ItemProcessor to perform business logic/filtering on the input    records -->
+  <bean id="itemProcessor" class="com.nt.batch.ExamResultItemProcessor" />   
+ <!-- Step will need a transaction manager -->  
+    <bean id="transactionManager" class="org.springframework.batch.support.transaction.ResourcelessTransactionManager" /> 
+ 
+ <!-- Actual Job --> 
+ <batch:job id="examResultJob">   
+  <batch:step id="step1">    
+   <batch:tasklet transactionmanager="transactionManager">     
+    <batch:chunk reader="dbItemReader" writer="flatFileItemWriter"   processor="itemProcessor" commitinterval="2" /> 
+   </batch:tasklet>
+  </batch:step>
+ </batch:job> 
+ 
+</beans> 
+ 

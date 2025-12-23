@@ -1,0 +1,28 @@
+Bulk Operation sin hibernate 
+===============================
+
+a)HQL/jpql
+b) native sql
+c)criteria api
+a)HQL/JPQL:
+================
+Query query=sess.createQuery("");
+query.setParameter();
+query.setParameter();
+query.setNamedQuery();
+List<entity> list=quey.list();
+Iterator<entity> iterator=query.iterator();
+List<entity> list=query.getResultList();
+int count=query.executeUpdate();
+@NamedQuery -->on entity class
+@Namedqueries -->on entity class
+ for pagination 
+====================
+query.setFirstResult(0)//page start point
+query.setMaxResult(2);
+List<entity> list=query.getResultList();
+
+
+
+
+

@@ -1,0 +1,638 @@
+==================================
+1)To reverse a given String
+==================================
+public class Test{
+    public static void main(String[] args) {
+       String str=new String("anhsirkamaR");
+       
+       String revers="";
+       for(int i=str.length()-1;i>=0;i--){
+           revers=revers+str.charAt(i);
+       }
+       System.out.println(revers);
+    }
+}
+========================================
+2)Fibonacci serice
+========================================
+class FibonacciExample1{  
+public static void main(String args[])  
+{    
+ int n1=0,n2=1,n3,i,count=10;    
+ System.out.print(n1+" "+n2);//printing 0 and 1    
+    
+ for(i=2;i<count;++i)//loop starts from 2 because 0 and 1 are already printed    
+ {    
+  n3=n1+n2;    
+  System.out.print(" "+n3);    
+  n1=n2;    
+  n2=n3;    
+		}    
+	}
+}  
+..........................................................
+.........................................................
+public class PrintFibonacciRecursive {
+
+    public static int fibonacci(int count) {
+		if (count <= 1)
+			return count;
+
+		return fibonacci(count - 1) + fibonacci(count - 2);
+	}
+
+	public static void main(String args[]) {
+    	int seqLength = 10;
+
+    	System.out.print("A Fibonacci sequence of " + seqLength + " numbers: ");
+
+    	for (int i = 0; i < seqLength; i++) {
+      	    System.out.print(fibonacci(i) + " ");
+    	}
+  	}
+
+}
+===================================
+3)swapping of two numbers
+===================================
+
+public class Test{
+   public static void main(String[] args) {
+      int a=10,b=20;
+      a=a+b;//30
+      b=a-b;//10
+      a=a-b;//20
+      System.out.println(a+" "+b);
+   }
+} 
+=====================================
+4)reverse of given number
+=====================================
+public class Test {
+   public static void main(String[] args) throws NumberFormatException {
+      int i=4564;
+      String s=String.valueOf(i);
+      String revnum="";
+      for(int j=s.length()-1;j>=0;j--){
+         revnum=revnum+s.charAt(j);
+      }
+      int x=Integer.parseInt(revnum);
+      System.out.println(x);
+   }
+} 
+    (or)
+    
+class Demo {
+    public static void main(String[] args)
+    {
+        int i= 18962;
+        while (i > 0) {
+            int r = i % 10;
+            System.out.print(r);
+            i = i / 10;
+        }
+    }
+}
+================================
+5)primenumber
+================================
+public class Primenumber {
+    public static void main(String[] args) {
+        for(int i=1;i<=100;i++){
+            int count=0;
+            for(int j=1;j<=i;j++){
+                if(i%j==0){
+                    count=count+1;
+                }
+            }
+            if(count==2){
+                System.out.print(i+" ");
+            }
+        }
+    }
+}
+..........................................................
+.........................................................
+public class PrimeNumberCheck {
+
+	public static void main(String[] args) {
+		System.out.println(isPrime(19)); // true
+		System.out.println(isPrime(49)); // true
+	}
+
+	public static boolean isPrime(int n) {
+		if (n == 0 || n == 1) {
+			return false;
+		}
+		if (n == 2) {
+			return true;
+		}
+		for (int i = 2; i <= n / 2; i++) {
+			if (n % i == 0) {
+				return false;
+			}
+		}
+
+		return true;
+	}
+}
+
+=====================
+6) for vertical input
+=====================
+
+import java.util.Scanner;
+
+public class App{
+
+   public static void main(String[] args) {
+      Scanner in = new Scanner(System.in);
+       while(true) {
+        int n = in.nextInt();
+        if (n == 42) break;
+        System.out.println(n);
+      }
+    }
+}
+=========================================
+7)Reverse a String without using any loop
+=========================================
+
+
+public class App {
+public static void main(String[] args) {
+    String name="Ramakrishna";
+    StringBuilder Name=new StringBuilder();
+    Name.append(name);
+    System.out.println(Name.reverse());
+	}
+}
+===========================================
+8)Singleton DesignPattern
+===========================================
+
+public class SingletonDesign {
+	public static void main(String[] args) {
+		Animal animal1=Animal.getInstance();
+		Animal animal2=Animal.getInstance();
+		System.out.println(animal1.hashCode());
+		System.out.println(animal2.hashCode());
+		System.out.println(animal1==animal2);
+	}
+}
+class Animal{
+	private static Animal single_instance=null;
+	private Animal(){
+	}
+	public static Animal getInstance() {
+		if(single_instance==null)
+			single_instance=new Animal();
+		return single_instance;
+	}
+}
+========================================================
+9)Program to find the duplicate characters in a string
+========================================================
+package com.rk;
+
+public class DuplicateCharacters {  
+    public static void main(String[] args) {  
+       String string1 = "Ramakrishna";  
+       int count;  
+         
+       //Converts given string into character array  
+       char string[] = string1.toCharArray();  
+         
+       System.out.println("Duplicate characters in a given string: ");  
+       //Counts each character present in the string  
+       for(int i = 0; i <string.length; i++) {  
+           count = 1;  
+           for(int j = i+1; j <string.length; j++) {  
+               if(string[i] == string[j] && string[i] != ' ') {  
+                   count++;  
+                   //Set string[j] to 0 to avoid printing visited character  
+                   string[j] = '0';  
+               }  
+           }  
+           //A character is considered as duplicate if count is greater than 1  
+           if(count > 1 && string[i] != '0')  
+               System.out.println(string[i]);  
+       }  
+   }  
+} 
+=================================================================
+10)Triangle
+     * 
+    * * 
+   * * * 
+  * * * * 
+ * * * * * 
+================================================================= 
+package com.rk;
+
+import java.util.Scanner;
+
+public class Diamond {
+	public static void main(String[] args) {
+		 Scanner sc = new Scanner(System.in);
+	        System.out.println("Enter the number of rows to be printed");
+	        int rows = sc.nextInt();
+	        for (int i = 1; i <= rows; i++) {
+	            for (int j = rows; j >= i; j--) {
+	                System.out.print(" ");
+	            }
+	            for (int j = 1; j <= i; j++) {
+	                System.out.print("* ");
+	            }
+	            System.out.println();
+	        }
+	}
+}
+================================================================
+11)Diamond
+     * 
+    * * 
+   * * * 
+  * * * * 
+ * * * * * 
+  * * * *
+   * * *
+    * *
+     *
+==============================================================
+package com.rk;
+
+import java.util.Scanner;
+
+public class Diamond {
+	public static void main(String[] args) {
+		Scanner sc = new Scanner(System.in);
+	        System.out.println("Enter the number of rows to be printed");
+	        int rows = sc.nextInt();
+	        for (int i = 1; i <= rows; i++) {
+	            for (int j = rows; j >= i; j--) {
+	                System.out.print(" ");
+	            }
+	            for (int j = 1; j <= i; j++) {
+	                System.out.print("* ");
+	            }
+	            System.out.println();
+	        }
+	        for(int i=1;i<rows;i++) {
+	        	for(int j=1;j<=i;j++) {
+	        		System.out.print(" ");
+	        	}
+	        	for(int j=rows-1;j>=i;j--) {
+	        		System.out.print(" *");
+	        	}
+	        	System.out.println();
+	        }
+	}
+}
+====================================================
+12)Write a Java program to check if a vowel is present in a string.
+=====================================================
+
+public class StringContainsVowels {
+
+	public static void main(String[] args) {
+		System.out.println(stringContainsVowels("Hello")); // true
+		System.out.println(stringContainsVowels("TV")); // false
+	}
+
+	public static boolean stringContainsVowels(String input) {
+		return input.toLowerCase().matches(".*[aeiou].*");
+	}
+
+}
+============================================================
+13)How do you check whether a string is a palindrome in Java
+============================================================
+boolean checkPalindromeString(String input) {
+	boolean result = true;
+	int length = input.length();
+
+	for (int i = 0; i < length/2; i++) {
+		if (input.charAt(i) != input.charAt(length - i - 1)) {
+			result = false;
+			break;
+		}
+	}
+
+	return result;
+	public static void main(String args[]) {
+		PrimeNumberCheck primeNumberCheck=new PrimeNumberCheck();
+		System.out.println(primeNumberCheck.checkPalindromeString("151"));
+	}
+		
+}
+=================================================================
+14)How do you remove spaces from a string in Java
+===================================================================
+String removeWhiteSpaces(String input) {
+	StringBuilder output = new StringBuilder();
+	
+	char[] charArray = input.toCharArray();
+	
+	for (char c : charArray) {
+		if (!Character.isWhitespace(c))
+			output.append(c);
+	}
+	
+	return output.toString();
+}
+==============================================================
+15)How do you reverse a linked list in Java
+============================================================
+	public static void main(String[] args) {
+		LinkedList<Integer> ll = new LinkedList<>();
+
+		ll.add(1);
+		ll.add(2);
+		ll.add(3);
+
+		System.out.println(ll);
+
+		LinkedList<Integer> ll1 = new LinkedList<>();
+
+		ll.descendingIterator().forEachRemaining(ll1::add);
+
+		System.out.println(ll1);
+}
+====================================================================
+package com.rk;
+
+public class LinkedList {
+
+	static ListNode head;
+
+	static class ListNode {
+		int val;
+		ListNode next;
+		ListNode() {}
+		ListNode(int val) { this.val = val; }
+		ListNode(int val, ListNode next) { this.val = val; this.next = next; }
+	}
+	
+	public ListNode reverseList(ListNode head) {
+        ListNode prev = null;  
+        ListNode current = head;
+    
+        while(current != null) { 
+            ListNode next = current.next; 
+            current.next = prev;
+            prev = current;
+            current = next;
+        }
+       return prev; 
+    } 
+
+	// prints content of double linked list
+	void printList(ListNode Node) {
+		while (Node != null) {
+			System.out.print(Node.val + " ");
+			Node = Node.next;
+		}
+	}
+
+	// Driver Code
+	public static void main(String[] args) {
+		LinkedList list = new LinkedList();
+		list.head = new ListNode(85);
+		list.head.next = new ListNode(15);
+		list.head.next.next = new ListNode(4);
+		list.head.next.next.next = new ListNode(20);
+
+		System.out.println("Given linked list");
+		list.printList(head);
+		head = list.reverseList(head);
+		System.out.println("");
+		System.out.println("Reversed linked list ");
+		list.printList(head);
+	}
+}
+=========================================================================================
+16)Reverse Integer
+=========================================================================================
+class Solution {
+    public int reverse(int x) {
+        if (x == Integer.MIN_VALUE){
+            return 0;
+        }
+        else{
+            int flag = 1;
+            if (x < 0){
+                flag = -1;
+                x = -x;
+            }
+            int result = 0;
+            while(x > 0){
+                int digit = x % 10;
+                int newresult = result * 10 + digit; 
+                if (result != (newresult - digit) / 10){
+                    result = 0;
+                    break;
+                }
+                result = newresult;
+                x = x / 10;
+            }
+            result = result * flag;
+            return result;
+        }
+    }
+}
+==============================================================================================
+17)Count the special Characters
+=============================================================================================
+public class Count_the_Special_Characters  {
+	public static void main (String args[]) {
+		String s="CloudTech#@!";
+		String SpecialCharactersRemoved="";
+		int count=0;
+		for(int i=0;i<s.length();i++) {
+			if(!Character.isDigit(s.charAt(i)) && !Character.isAlphabetic(s.charAt(i)) 
+					&& !Character.isWhitespace(s.charAt(i))) {
+				count++;
+			}
+			else {
+				SpecialCharactersRemoved=SpecialCharactersRemoved+s.charAt(i);
+			}
+		}
+		if(count==0) {
+			System.out.println("There are no special characters in Given String");
+		}
+		else {
+			System.out.println("The Special Characters count are==>"+count);//3
+		}
+		System.out.println("Special Characters removed"+SpecialCharactersRemoved); //CloudTech
+	}
+}
+===============================================================================================
+18)Rotation of String
+===============================================================================================
+public class Program2{
+	public static void main(String args[]) {
+		String str1="ABCD";
+		String str2="CDAF";
+		if(isRotation(str1, str2)) {
+			System.out.println("Rotation of String is Present");
+		}
+		else {
+			System.out.println("Rotation String is Not Present");
+		}
+	}
+	public static boolean isRotation(String str1,String str2) {
+		return(str1.length()==str2.length()) && ((str1+str1).indexOf(str2)!=-1);
+	}
+}
+==============================================================================================
+19)Find Missing Number
+==========================================================================================
+public class MissingNumber{
+	public static void main (String args[]){
+		int arry1[]=new int[] {1, 2, 3, 4, 6, 7, 8, 9, 10};
+		int sum=(10*11)/2;
+		int ActualSum=0;
+		for(int i=0;i<arry1.length;i++){
+			ActualSum=ActualSum+arry1[i];
+		}
+	System.out.println("The missing Numer is  "+(sum-ActualSum));
+	}
+}
+===========================================================================================
+20)this is cloudtech THIS IS CLOUDTECH
+==========================================================================================
+public class Program2{
+	public static void main(String args[]) {
+		String str="This is CloudTech This is CloudTech";
+		
+		int mid=str.length()/2;
+		
+		String lowercase="";
+		String Uppercase="";
+		
+		for(int i =  0;i<str.length();i++) {
+			if(i<mid) {
+				lowercase=lowercase+Character.toLowerCase(str.charAt(i));
+			}
+			else {
+				Uppercase=Uppercase+Character.toUpperCase(str.charAt(i));
+			}
+		}
+		System.out.println(lowercase+Uppercase);//this is cloudtech THIS IS CLOUDTECH
+	}
+}
+=================================================================================================
+21)write a code for print a number from 1 to 10 without loop in java
+==============================================================================================
+class PrintDemo{
+	public static void recursivefun(int n) 
+	{ 
+  		if(n <= 10) {
+ 	      		System.out.println(n); 
+         		recursivefun(n+1);   }
+		}
+ 
+	public static void main(String args[]) 
+	{
+	recursivefun(1); 
+ 	}
+ 
+}
+================================================================================================
+22)String str="abbbc";
+a==>1
+b==>3
+c==>1
+=============================================================================================
+import java.util.HashMap;
+import java.util.Map;
+
+public class FrequencyofChar {
+    public static void main(String[] args) {
+        String str = "abbbc";
+        char ch;
+        Map<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < str.length(); i++) {
+            ch = str.charAt(i);
+            if (map.containsKey(ch)) {
+                map.put(ch, map.get(ch) + 1);
+            } else {
+                map.put(ch, 1);
+            }
+        }
+        System.out.println(map);
+    }
+}
+======================================================
+23)Sorting of an Array
+=================================================
+public class Main {
+   public static void main(String args[]) {
+      int[] arr = new int[] { 3, 6, 4, 0, 1, 7 };
+      System.out.println(Arrays.toString(arr));
+
+      int temp = 0;
+      for (int i = 0; i < arr.length - 1; i++) {
+         for (int j = i + 1; j < arr.length - 1; j++) {
+            if (arr[i] > arr[j]) {
+               temp = arr[i];
+               arr[i] = arr[j];
+               arr[j] = temp;
+            }
+         }
+      }
+      System.out.println(Arrays.toString(arr));
+   }
+}
+=========================================================
+24)Selection Sort ArrayList
+==========================================================
+public class Main {
+   public static void main(String args[]) {
+      
+      ArrayList<Integer> al = new ArrayList<>();
+      al.add(1);
+      al.add(7);
+      al.add(9);
+      al.add(4);
+      al.add(6);
+
+      int temp = 0;
+      for (int i = 0; i < al.size(); i++) {
+         for (int j = i + 1; j < al.size(); j++) {
+            if (al.get(i) > al.get(j)) {
+               temp = al.get(i);
+               al.set(i, al.get(j));
+               al.set(j, temp);
+            }
+         }
+      }
+      System.out.println(al);
+   }
+}
+===============================================================
+25)Find repetedCharacter Using streams
+=============================================================
+package com.rk;
+
+import java.util.Map;
+import java.util.function.Function;
+import java.util.stream.Collectors;
+
+public class Mainlessclass {
+	public static void main(String[] args) {
+		String input=new String("Ramakrishna");
+		 Map<Character, Long> repeatedChars = input.chars()
+				 .mapToObj(c ->(char) c)
+				 .collect(Collectors.groupingBy(Function.identity(),Collectors.counting()))
+				 .entrySet().stream()
+				 .filter(entry -> entry.getValue()>1)
+				 .collect(Collectors.toMap(Map.Entry::getKey, Map.Entry::getValue));
+		 
+		 System.out.println("Repeted Charecters");
+		 repeatedChars.forEach((Character,count)->System.out.println(Character+"  "+count));
+	                
+	}
+}
+

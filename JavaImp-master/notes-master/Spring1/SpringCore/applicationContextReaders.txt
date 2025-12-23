@@ -1,0 +1,11 @@
+1)FileSystemResource res=new FileSystemResource("src/com/nt/cfg/applicationContext.xml");
+   XmlBeanFactory factory=new XmlBeanFactory(res);
+  Student std=(Student)factory.getBean("std");
+
+2)ApplicationContext context=new ClassPathXmlApplicationContext("applicationContext.xml");
+
+3)DefaultListableBeanFactory factory=new DefaultListableBeanFactory();
+		XmlBeanDefinitionReader reader=new XmlBeanDefinitionReader(factory);
+         reader.loadBeanDefinitions("com/nt/cfgs/applicationContext.xml");
+
+		agent=factory.getBean("agent",TravelAgent.class);	

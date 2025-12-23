@@ -1,0 +1,252 @@
+Overloading of the main() method is possible but JVM always calls string[] argument 
+main() method only. 
+
+
+Static control flow :
+
+1. Identification of static members from top to bottom
+2. execution of static variable assignments and static blocks from top to bottom
+3. execution of main  method
+
+Static control flow parent to child relationship :
+
+1. Identification of static members from Parent to Child. [1 to 11] 
+2. Execution of static variable assignments and static blocks from Parent to 
+Child.[12 to 22] 
+3. Execution of Child class main() method.[23 to 25].
+
+
+Instance control flow:
+
+Whenever we are executing a java class static control flow will be executed. In the Static 
+control flow Whenever we are creating an object the following sequence of events will 
+be performed automatically. 
+1. Identification of instance members from top to bottom(3 to 8).
+2. Execution of instance variable assignments and instance blocks from top to 
+bottom(9 to 14).
+3. Execution of constructor.
+
+
+Instance control flow in Parent to Child relationship :
+
+Whenever we are creating child class object the following sequence of events will be 
+executed automatically. 
+1. Identification of instance members from Parent to Child.
+2. Execution of instance variable assignments and instance block only in Parent 
+class.
+3. Execution of Parent class constructor.
+4. Execution of instance variable assignments and instance blocks in Child class.
+5. Execution of Child class constructor.
+Note: Object creation is the most costly operation in java and hence if there is no 
+specific requirement never recommended to crate objects.
+
+
+hashtable Default Initial Capacity 11 and Default Fill Ratio 0.75.
+
+
+Default methods also known as defender methods or virtual extension methods.
+The main advantage of default methods is without effecting implementation classes we can addnew 
+functionality to the interface(backward compatibility).
+
+
+
+
+===============================
+Remove Duplicates from String
+================================
+public class RemoveDuplicatesFromString {
+	public static void main(String[] args) {
+
+
+
+		//==========using Java 8
+		String input = new String("Ramakrishna").toLowerCase();
+		String noDuplicates=Arrays.asList(input.split("")).stream().distinct().collect(Collectors.joining());
+		System.out.println(noDuplicates);
+		
+
+
+		//==================================================
+		String results="";
+		for(int i=0;i<input.length();i++) {
+			if(!results.contains(String.valueOf(input.charAt(i)))) {
+				results+=String.valueOf(input.charAt(i));
+			}
+		}
+		System.out.println(results);
+		
+		//By using Set
+		Set<Character> op=new HashSet<Character>();
+		for(char s:input.toCharArray()) {
+			op.add(s);
+		}
+		System.out.println(op);
+		
+
+
+
+		/// By using Inner for Loop
+		String s = "harikrishna";
+        String s2 = "";
+        for (int i = 0; i < s.length(); i++) {
+            Boolean found = false;
+            for (int j = 0; j < s2.length(); j++) {
+                if (s.charAt(i) == s2.charAt(j)) {
+                    found = true;
+                    break; //don't need to iterate further
+                }
+            }
+            if (found == false) {
+                s2 = s2.concat(String.valueOf(s.charAt(i)));
+            }
+        }
+        System.out.println(s2);
+	}
+}
+
+===================================================================
+Dear Team
+#Synechron #Hyderabad java developer interview questions answers 6 years experience 
+Q.How would you optimize 10,000 if-else statements? Is there a good solution?
+Ans- In Java, to optimize handling of 10,000 if-else statements, you can use a HashMap for efficient lookup. Here’s how you can do it:Use a HashMap:Store conditions as keys and corresponding actions as values in a HashMap.Example in Java:import java.util.HashMap;
+
+
+import java.util.Map;
+public class OptimizedIfElse {
+    public static void main(String[] args) {
+        // Create a HashMap to store conditions and actions
+        Map<String, String> conditions = new HashMap<>();
+        // Populate the HashMap with conditions and corresponding actions
+        conditions.put("condition1", "action1");
+        conditions.put("condition2", "action2");
+        // Add more conditions and actions up to condition10000
+        // Example usage: simulate a condition being checked
+        String condition = "condition1";
+        if (conditions.containsKey(condition)) {
+            String action = conditions.get(condition);
+            // Perform action based on result
+            System.out.println("Performing action: " + action);
+        } else {
+            // Handle the case where condition does not match any key
+            System.out.println("No action defined for condition: " + condition);
+        }
+    }
+}
+Advantages:Efficiency: HashMap lookup is average O(1) time complexity, making it highly efficient for large datasets like 10,000 conditions.Readability: Improves code readability and maintainability compared to managing thousands of if-else statements directly.Considerations:Ensure conditions are unique and correctly defined to avoid collisions in the HashMap.Handle cases where the condition doesn’t match any key in the HashMap appropriately.By using a HashMap in Java, you streamline the process of condition checking and action execution, optimizing performance significantly compared to traditional if-else chains when dealing with a large number of conditions.
+Q.How to check the time complexity of the program during code review?
+Ans - To check the time complexity of a program during a code review, follow these steps for a quick assessment:
+1. **Identify Loops and Operations:** Look for loops and operations that depend on the size of input data (like arrays, lists, or nested loops).
+2. **Count Operations Inside Loops:** Estimate how many basic operations (assignments, comparisons, etc.) occur inside each loop.
+3. **Analyze Nested Loops:** Determine if there are nested loops and understand how their iterations relate to the size of the input.
+4. **Use Big-O Notation:** Express the time complexity using Big-O notation based on the highest order of growth of operations relative to input size (e.g., O(n), O(n^2)).
+5. **Consider Built-in Functions and Libraries:** Be aware of built-in functions and library calls and their time complexity, as they can impact overall performance.
+6. **Discuss and Recommend Improvements:** If time complexity is suboptimal, discuss potential improvements with the developer, considering alternative algorithms or data structures.
+For example, if you see a single loop iterating through an array of size `n` and performing constant-time operations inside, the time complexity would typically be O(n). If you encounter nested loops where the outer loop runs `n` times and the inner loop runs `m` times, the time complexity could be O(n * m).
+Q.Write a program to find the missing number in an Array.
+int[] arr = {1,2,3,5,6} you need to find 4 that is missing in this.
+Ans - public class MissingNumberFinder {
+    public static void main(String[] args) {
+        int[] arr = {1, 2, 3, 5, 6};
+        int missingNumber = findMissingNumber(arr);
+        System.out.println("The missing number is: " + missingNumber);
+    }
+    public static int findMissingNumber(int[] arr) {
+        // Calculate the expected sum of the series from 1 to n
+        int n = arr.length + 1; // n is the size of the array if the missing number is included
+        int expectedSum = n * (n + 1) / 2;
+        // Calculate the actual sum of elements in the array
+        int actualSum = 0;
+        for (int num : arr) {
+            actualSum += num;
+        }
+        // The missing number is the difference between the expected sum and the actual sum
+        int missingNumber = expectedSum - actualSum;
+        return missingNumber;
+    }
+}
+Q.Write a Program to find the duplicates in an array using stream API.
+import java.util.Arrays;
+import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
+public class FindDuplicatesWithStreamAPI {
+    public static void main(String[] args) {
+        Integer[] array = {1, 2, 3, 4, 2, 5, 6, 3, 7, 8, 4};
+        List<Integer> list = Arrays.asList(array);
+        Map<Integer, Long> frequencyMap = list.stream()
+                .collect(Collectors.groupingBy(
+                        i -> i, // group by each element
+                        Collectors.counting() // count occurrences of each element
+                ));
+        // Filter elements that appear more than once
+        List<Integer> duplicates = frequencyMap.entrySet().stream()
+                .filter(entry -> entry.getValue() > 1)
+                .map(Map.Entry::getKey)
+                .collect(Collectors.toList());
+        System.out.println("Duplicates in the array: " + duplicates);
+    }
+}
+Q.Q.What are the new Java-8 changes in HashMap?
+Ans - Java 8 made the following changes to HashMap:
+The new hash function for Strings: Java 8 introduced a new hash function for Strings that is more resistant to hash collisions. This can improve the performance of HashMap when it is used to store Strings.
+Treeification: Java 8 added a new feature called “treeification” to HashMap. Treeification automatically converts a linked list of entries in a bucket to a red-black tree when the number of entries in the bucket exceeds a certain threshold. This can improve the performance of HashMap when there are a large number of hash collisions.
+ConcurrentHashMap: Java 8 introduced a new concurrent implementation of HashMap called ConcurrentHashMap. ConcurrentHashMap is designed to be safe for concurrent access by multiple threads.
+Q.Q.How to use sorting in Java-8?
+Ans - In Java 8, you can use the sorted method of the Stream API to sort elements in a collection. By default, the sorted method sorts elements in their natural order, but you can also provide a Comparator to specify the sort order.
+Here’s an example of how you can sort a list of integers in ascending order using the sorted method:
+List<Integer> numbers = Arrays.asList(3, 1, 4, 1, 5, 9, 2, 6, 5, 3, 5);
+numbers.stream()
+.sorted()
+.forEach(System.out::println);
+Here’s an example of how you can sort a list of strings in descending order based on their length:
+List<String> words = Arrays.asList("apple", "banana", "cherry", "date", "elderberry");
+words.stream()
+.sorted(Comparator.comparingInt(String::length).reversed())
+.forEach(System.out::println);
+In this example, we use the Comparator.comparingInt method to create a comparator that compares strings based on their length, and then we use the reversed method to reverse the sort order.
+Note that the sorted method returns a new stream with the elements sorted in the specified order, and it does not modify the original stream or collection.
+Q.Write a Program to print only numbers from an alphanumeric char array using stream API in java-8.
+import java.util.Arrays;
+public class AlphanumericFilterExample {
+public static void main(String[] args) {
+String str = "a1b2c3d4e5f6g7h8i9j0";
+char[] arr = str.toCharArray();
+System.out.println("Original array: " + Arrays.toString(arr));
+int[] nums = new String(arr)
+.chars()
+.filter(Character::isDigit)
+.map(Character::getNumericValue)
+.toArray();
+System.out.println("Numbers only: " + Arrays.toString(nums));
+}
+}
+Q.Write a program to find the sum of the entire array result using Java 8 streams.
+import java.util.Arrays;
+public class ArraySum {
+public static void main(String[] args) {
+int[] arr = {1, 2, 3, 4, 5};
+int sum = Arrays.stream(arr).sum();
+System.out.println("Sum of array elements: " + sum);
+}
+}
+In this program, we first define an integer array arr with some elements. Then we use the Arrays.stream() method to create a stream of integers from the array, and then we call the sum() method on the stream to find the sum of all the elements in the array.
+Finally, we print the sum using the System.out.println() statement.
+Q.Q.How to process unique records in Java stream API, how to avoid duplicate record
+Using distinct Stream api functions we can avoid processing duplicates,
+import java.util.Arrays;
+import java.util.List;
+public class Example {
+    public static void main(String[] args) {
+        List<Integer> numbers = Arrays.asList(1, 2, 3, 4, 3, 2, 5, 6, 4, 7, 8, 7, 6);
+        numbers.stream()
+               .distinct()
+               .forEach(System.out::println);
+    }
+}
+Q.Q.How can we determine if the current code incorporates aggregation, composition, and inheritance, and what practical purposes do these concepts server.
+
+
+
+
+
+

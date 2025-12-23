@@ -1,0 +1,18 @@
+zookeeper-server-start.bat D:\Software\kafka_2.13-3.1.0\config\zookeeper.properties
+
+kafka-server-start.bat D:\Software\kafka_2.13-3.1.0\config\server.properties 
+
+kafka-topics.bat --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic nt-tpc2
+
+kafka-console-producer.bat --bootstrap-server localhost:9092 --topic nt-tpc2
+
+kafka-console-consumer.bat --bootstrap-server localhost:9092 --topic nt-tpc2
+
+kafka-topics.bat --bootstrap-server localhost:9092 --delete --topic nt-tpc1
+
+
+.\kafka-topics.bat -- command-config playground. config -- bootstrap-server cluster.playground.cdkt.io:9092 -- list
+
+
+
+.\kafka-topics.bat -- command-config playground.config -- bootstrap-server cluster.playground. cdkt. io:9092 -- topic second_topic -- delete

@@ -1,0 +1,126 @@
+1--->Redis
+2--->VotingAppliation(python)--->(build)
+3--->Postgress-sql(9.4)
+4--->Worker(.net)--->(build)
+5--->Result--->(build)
+
+cd vote
+docker build -t votingapp .
+cd worker
+docker build -t workerapp .
+cd result
+docker build -t resultapp .
+
+-->docker run -d --name=redis redis:5.0-alpine 3.10
+-->docker run -d -p 5000:80 --link redis:redis votingapp
+-->docker run -d --name=db -e POSTGRES_USER=postgress -e POSTGRESS_PASSWORD=postgress postgress:9.4
+-->docker run -d --link redis:redis --link db:db workerapp
+-->docker run -d -p 5001:80 --link db:db resultapp
+
+
+
+
+Plugins for jenkins ===>git,maven Integration 
+====>In Global tool configuration add maven home path or allow to download
+======>Build pipeline for gui pipeline
+======>Deploy to container plugin for deloy into container
+--->post Build action==>deploy war/ear to container
+
+warfile path ====>.jenkins/workspace/jobname/target/warfile(**/*.war)
+contex path ===>/clodbots_warproject
+
+export M2_HOME=/opt/apache-maven-3.8.5 |
+export PATH=$PATH:$M2_HOME/bin		|===>u can add in bash_profile
+
+
+
+mavenHome path--->/opt/apache-maven-3.8.5/bin
+tomcatHome directory--->/opt/apache-tomcat-8.5.78/bin
+
+
+create jobs 
+
+1)compile job--->(Build after other projects are build)2)test job---->(Build after other projects are build)3)package job
+
+
+
+
+
+
+
+
+
+===============================================
+groovy
+===============================================
+pipeline {
+    agent any
+
+    stages {
+        stage('Build') {
+            steps {
+                echo 'Building...'
+                sh 'mvn clean compile'
+            }
+        }
+
+        stage('Test') {
+            steps {
+                echo 'Testing...'
+                sh 'mvn test'
+            }
+        }
+
+        stage('Package') {
+            steps {
+                echo 'Packaging...'
+                sh 'mvn package'
+            }
+        }
+    }
+
+    post {
+        success {
+            echo 'Build, Test, and Package stages completed successfully.'
+        }
+        failure {
+            echo 'One of the stages failed. Please check the logs.'
+        }
+    }
+}
+
+
+=======>Monitoring tools--->nagios(open source),splunk,for aws (cloudwatch)
+--->what will monitor? -->health,capacity,performance
+types of monitoring tools ==>agentbased,agentless,agentbased+agentless(nagios)
+
+trap-->capture any problems between intervals(90sec)
+-->metries--->cpu,memory,n/w,httpd,mysql,disk,db
+======>Nagios-->Homepath----> /usr/local/nagios/etc/
+======>Tomcat--->homepath--->/usr/local/tomcat
+======>Jenkins--->Homepath--->/var/lib/jenkins
+
+
+
+
+
+ansible main cnfg file===>ansible.cfg
+nagios main cfg file===>nagios.cfg
+
+
+setup-webhook
+	* create a token on jenkins.
+	* copy token to github repo
+	* setup
+
+we need to enable gitHub hook trigger for GITScm polling
+webhook-->http://3.11..97:8080/jenkins/github-webhook/ 
+
+for cronjob
+we need to enable pollSCM
+	0 * * * *
+
+
+
+Terraform is often used for infrastructure provisioning in cloud environments, 
+while Ansible is known for its configuration management and cross-domain automation capabilities
